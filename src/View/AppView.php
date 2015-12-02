@@ -25,12 +25,6 @@ class AppView extends View
     {
         parent::initialize();
         $this->loadHelper('Core');
-        if($this->request->params['plugin'] == 'Admin')
-        {
-            $this->loadHelper('Form', [
-                'templates' => 'Admin.app_form',
-                'errorClass' => 'state-error'
-            ]);
-        }
+
     }
 }

@@ -38,6 +38,10 @@ if (!defined('FILE_ERROR_MAX_SIZE')) {define('FILE_ERROR_MAX_SIZE', 1);}
 if (!defined('FILE_ERROR_EXTENSION')) {define('FILE_ERROR_EXTENSION', 2);}
 if (!defined('FILE_ERROR_EMPTY')) {define('FILE_ERROR_EMPTY', 3);}
 
+/* --- Device type --- */
+if (!defined('LAPTOP_TYPE')) {define('LAPTOP_TYPE', 1);}
+if (!defined('PC_TYPE')) {define('PC_TYPE', 2);}
+
 /* --- Path upload files --- */
 if (!defined('PATH_IMAGE_FILE')) {define('PATH_IMAGE_FILE', WWW_ROOT.'upload'.DS);}
 
@@ -334,6 +338,12 @@ return [
             236 => 'Yugoslavia',
             237 => 'Zambia',
             238 => 'Zimbabwe'
+        ]
+    ],
+    'Shop' => [
+        'Device_Type'=> [
+            LAPTOP_TYPE => __('Laptop'),
+            PC_TYPE => __('PC')
         ]
     ]
 ];

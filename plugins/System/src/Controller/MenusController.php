@@ -146,8 +146,6 @@ class MenusController extends AppController
             $menus = $this->Menus->newEntities($data);
             $err = 0;
             foreach ($menus as $menu) {
-                debug($menu);
-                die;
                 if(!$this->Menus->save($menu)) {
                     $err++;
                 }

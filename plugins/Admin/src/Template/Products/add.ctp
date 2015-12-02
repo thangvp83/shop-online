@@ -4,7 +4,7 @@
         <h1 class="page-title txt-color-blueDark">
             <i class="fa fa-cog fa-fw "></i>
             <?= __('Product');?>
-            <span> > 
+            <span> >
                 <?= $this->Html->link(__('List of products'), ['plugin'=>'admin','action' => 'index'])?>
             </span>
         </h1>
@@ -13,7 +13,7 @@
 
 
 <div class="row">
-				
+
 <!-- NEW WIDGET START -->
 <article class="col-sm-12 col-md-12 col-lg-12">
 
@@ -29,10 +29,10 @@
                 <!-- widget content -->
                 <div class="widget-body">
                     <?php $this->loadHelper('Form', ['templates' => 'Admin.bootstrap_form']); ?>
-                    <?= $this->Form->create($product, ['id' => 'smart-form-register', 'class' => 'form-horizontal']) ?>
+                    <?= $this->Form->create($product, ['id' => 'smart-form-register', 'class' => 'form-horizontal', 'templates' => 'Admin.bootstrap_form']) ?>
                         <fieldset>
                             <div class="form-group"></div>
-                            
+
                             <div class="form-group">
                                 <label class="col-md-2 control-label"><?= __('Category id') ?></label>
                                 <div class="col-md-9">
