@@ -79,13 +79,14 @@ class Initial extends AbstractMigration
             ->addColumn('content', 'text')                        
             ->save();
 
-        $products = $this->table('products');
+        $products = $this->table('products',['primary_key' => 'id']);
         $products
-            ->addColumn('cate_id', 'integer', ['limit' => 10,'null' => false])
-            ->addColumn('feature', 'boolean', ['limit' => 100,'null' => true,'default' => null])
+            ->addColumn('category_id', 'integer', ['limit' => 10,'null' => false])
+            ->addColumn('feature', 'boolean', ['limit' => 2,'null' => true,'default' => null])
+            ->addColumn('recommend', 'boolean', ['limit' => 2,'null' => true,'default' => null])
             ->addColumn('name', 'string', ['limit' => 100,'null' => true,'default' => null])
-            ->addColumn('brand_name', ['limit' => 100,'null' => true,'default' => null])
-            ->addColumn('description', ['limit' => 400,'null' => true,'default' => null])
+            ->addColumn('brand_name','string', ['limit' => 100,'null' => true,'default' => null])
+            ->addColumn('description', 'string', ['limit' => 400,'null' => true,'default' => null])
             ->addColumn('image', 'string', ['limit' => 100,'null' => true,'default' => null])
             ->addColumn('thumbnail', 'string', ['limit' => 100,'null' => true,'default' => null])
             ->addColumn('price', 'integer', ['limit' => 10,'default' => 0])
@@ -96,11 +97,22 @@ class Initial extends AbstractMigration
             ->addColumn('created', 'datetime')
             ->save();
 
-        $banners = $this->table('banners');
+        $categories = $this->table('categories',['primary_key' => 'id']);
+        $categories
+            ->addColumn('feature', 'boolean', ['limit' => 100,'null' => true,'default' => null])
+            ->addColumn('name', 'string', ['limit' => 100,'null' => true,'default' => null])
+            ->addColumn('description', 'string', ['limit' => 400,'null' => true,'default' => null])
+            ->addColumn('image', 'string', ['limit' => 100,'null' => true,'default' => null])
+            ->addColumn('thumbnail', 'string', ['limit' => 100,'null' => true,'default' => null])
+            ->addColumn('status', 'boolean', ['default' => 1])
+            ->addColumn('created', 'datetime')
+            ->save();
+
+        $banners = $this->table('banners',['primary_key' => 'id']);
         $banners
             ->addColumn('name', 'string', ['limit' => 100,'null' => true,'default' => null])
-            ->addColumn('description', ['limit' => 100,'null' => true,'default' => null])
-            ->addColumn('content', ['limit' => 400,'null' => true,'default' => null])
+            ->addColumn('description', 'string', ['limit' => 100,'null' => true,'default' => null])
+            ->addColumn('content', 'string', ['limit' => 400,'null' => true,'default' => null])
             ->addColumn('link', 'string', ['limit' => 400,'null' => true,'default' => null])
             ->addColumn('thumbnail', 'string', ['limit' => 100,'null' => true,'default' => null])
             ->addColumn('price', 'integer', ['limit' => 10,'default' => 0])

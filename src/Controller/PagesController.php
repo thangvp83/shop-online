@@ -32,8 +32,8 @@ class PagesController extends AppController
     public function index()
     {
         // This is homepage
-        $this->paginate = ['limit'=>2];
-        $this->buildAjaxMore('Menus','ajax_more','list',['container'=>'#divMore','link'=>'.hw-ajax-more']);
+//        $this->paginate = ['limit'=>2];
+//        $this->buildAjaxMore('Menus','ajax_more','list',['container'=>'#divMore','link'=>'.hw-ajax-more']);
     }
     
     public function cake()

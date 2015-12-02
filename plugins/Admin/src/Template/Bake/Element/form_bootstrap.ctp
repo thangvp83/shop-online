@@ -50,6 +50,10 @@ $fields = collection($fields)
 <%
                             if (isset($keyFields[$field])) 
                             {
+%>
+                                <label class="col-md-2 control-label"><%= "<?= __('".ucfirst(strtolower(Inflector::humanize($field)))."') ?>" %></label>
+                                <div class="col-md-9">
+<%
                                 $fieldData = $schema->column($field);
                                 if (!empty($fieldData['null'])) 
                                 {
@@ -62,6 +66,12 @@ $fields = collection($fields)
                                 <?= $this->Form->input('<%= $field %>', ['placeholder' => __('<%= Inflector::humanize($field) %>'),'class'=>'form-control', 'options' => $<%= $keyFields[$field] %>]) ?>
 <%
                                 }
+%>
+                                </div>
+<%
+%>
+                                </div>
+<%
                                 continue;
                             }
                             
@@ -76,7 +86,7 @@ $fields = collection($fields)
                                 } else 
                                 {
 %>
-                                <label class="col-md-2 control-label"><%= ucfirst(strtolower(Inflector::humanize($field))) %></label>
+                                <label class="col-md-2 control-label"><%= "<?= __('".ucfirst(strtolower(Inflector::humanize($field)))."') ?>" %></label>
                                 <div class="col-md-9">
 <%  
                                     if ($fieldData['type'] === 'boolean')
@@ -97,10 +107,12 @@ $fields = collection($fields)
                                         <?= $this->Form->input('<%= $field %>', ['placeholder' => __('<%= ucfirst(strtolower(Inflector::humanize($field))) %>'),'class'=>'form-control']) ?>
 <%
                                     }
+%>
+                            </div>
+<%
                                 }
                             }
 %>
-                                </div>
                             </div>
 <%
                         }

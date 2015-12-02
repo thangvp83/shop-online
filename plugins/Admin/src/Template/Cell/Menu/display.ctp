@@ -41,7 +41,7 @@
             if ($params['url']) {
                 $url = $params['url'];
                 if (strtolower($request['controller']) == $params['url']['controller'] && strtolower($request['action']) == $params['url']['action']) {
-                    $class .= ' open active ';
+                    $class .= null;
                     $active = true;
                 }
             }
@@ -57,8 +57,9 @@
                 echo '<ul>';
                 foreach ($params['child'] as $nameSub => $subParams) {
                     $class = null;
-                    if ($subParams['url'] && strtolower($this->request->controller) == $subParams['url']['controller'] /*&& $this->request->action == $subParams['url']['action']*/) {
-                        $class = 'active';
+                    if (strtolower($request['controller']) == $params['url']['controller'] && strtolower($request['action']) == $params['url']['action']) {
+                        $class .= ' open active ';
+                        $active = true;
                     }
                     $url = $subParams['url'] ? $subParams['url'] : '#';
                     echo '<li class="' . $class . '">';
