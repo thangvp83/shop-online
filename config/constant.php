@@ -42,6 +42,10 @@ if (!defined('FILE_ERROR_EMPTY')) {define('FILE_ERROR_EMPTY', 3);}
 if (!defined('LAPTOP_TYPE')) {define('LAPTOP_TYPE', 1);}
 if (!defined('PC_TYPE')) {define('PC_TYPE', 2);}
 
+/* --- Status --- */
+if (!defined('ACTIVE_STATUS')) {define('ACTIVE_STATUS', 1);}
+if (!defined('BLOCK_STATUS')) {define('BLOCK_STATUS', 0);}
+
 /* --- Path upload files --- */
 if (!defined('PATH_IMAGE_FILE')) {define('PATH_IMAGE_FILE', WWW_ROOT.'upload'.DS);}
 

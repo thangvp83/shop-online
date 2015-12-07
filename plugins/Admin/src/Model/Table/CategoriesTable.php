@@ -48,6 +48,9 @@ class CategoriesTable extends Table
         $validator
             ->add('id', 'valid', ['rule' => 'numeric'])
             ->allowEmpty('id', 'create');
+        $validator
+            ->add('parent_id', 'valid', ['rule' => 'numeric'])
+            ->allowEmpty('parent_id', 'create');
 
         $validator
             ->add('feature', 'valid', ['rule' => 'boolean'])
@@ -71,5 +74,43 @@ class CategoriesTable extends Table
             ->notEmpty('status');
 
         return $validator;
+    }
+
+    public function getAllParent()
+    {
+        $data = array();
+        $result = $this->find()
+            ->select(['id', 'name'])
+            ->where(['parent_id' => 0, 'status' => ACTIVE_STATUS])
+            ->toArray();
+        if($result) {
+            foreach ($result as $item) {
+                $data[$item['id']] = $item['name'];
+            }
+        }
+        return $data;
+    }
+
+    public function getCategoriesForProduct()
+    {
+        $data = array();
+        $result = $this->find()
+            ->select(['id', 'parent_id', 'name'])
+            ->where(['status' => ACTIVE_STATUS])
+            ->toArray();
+        if($result) {
+            foreach ($result as $item) {
+                if($item['parent_id'] == 0){
+                    $data[$item['id']] = $item['name'];
+                    foreach ($result as $sub_cate) {
+                        if($sub_cate['parent_id'] == $item['id']){
+                            $data[$sub_cate['id']] = '__ '.$sub_cate['name'];
+                        }
+                    }
+                }
+
+            }
+        }
+        return $data;
     }
 }

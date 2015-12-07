@@ -1,11 +1,11 @@
-<?php $this->Html->addCrumb(__('Product'));?>
+<?php $this->Html->addCrumb(__('Category'));?>
 <div class="row">
     <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
         <h1 class="page-title txt-color-blueDark">
             <i class="fa fa-cog fa-fw "></i>
-            <?= __('Product');?>
+            <?= __('Category');?>
             <span> >
-                <?= $this->Html->link(__('List of products'), ['plugin'=>'admin','action' => 'index'])?>
+                <?= $this->Html->link(__('List of Categories'), ['plugin'=>'admin','action' => 'index'])?>
             </span>
         </h1>
     </div>
@@ -21,7 +21,7 @@
         <div class="jarviswidget jarviswidget-color-darken" id="wid-id-0" data-widget-colorbutton="false" data-widget-editbutton="false">
             <header>
                 <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
-                <h2><?= ($category->isNew())?__('Product add'):__('Product edit') ?></h2>
+                <h2><?= ($category->isNew())?__('Category add'):__('Category edit') ?></h2>
             </header>
 
             <!-- widget div-->
@@ -31,6 +31,15 @@
                     <?= $this->Form->create($category, ['id' => 'smart-form-register', 'class' => 'form-horizontal', 'templates' => 'Admin.bootstrap_form']) ?>
                     <fieldset>
                         <div class="form-group"></div>
+
+                        <div class="form-group">
+                            <label class="col-md-2 control-label"><?= __('Parent') ?></label>
+                            <div class="col-md-9">
+                                <?= $this->Form->input('parent_id',['type' => 'select',
+                                    'options' => $category['parent'],
+                                    'class'=>'form-control']) ?>
+                            </div>
+                        </div>
 
                         <div class="form-group">
                             <label class="col-md-2 control-label"><?= __('Feature') ?></label>
@@ -47,7 +56,7 @@
                         <div class="form-group">
                             <label class="col-md-2 control-label"><?= __('Description') ?></label>
                             <div class="col-md-9">
-                                <?= $this->Form->input('description', ['placeholder' => __('Description'),'class'=>'form-control']) ?>
+                                <?= $this->Form->textarea('description', ['placeholder' => __('Description'),'class'=>'form-control']) ?>
                             </div>
                         </div>
                         <div class="form-group">

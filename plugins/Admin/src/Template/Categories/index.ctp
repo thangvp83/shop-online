@@ -40,6 +40,7 @@
                         <thead>
                         <tr>
                             <th class="hasinput"><input type="text" class="form-control" placeholder="Filter category id" /></th>
+                            <th class="hasinput"><input type="text" class="form-control" placeholder="Filter Parent id" /></th>
                             <th class="hasinput"><input type="text" class="form-control" placeholder="Filter feature" /></th>
                             <th class="hasinput"><input type="text" class="form-control" placeholder="Filter name" /></th>
                             <th class="hasinput"><input type="text" class="form-control" placeholder="Filter description" /></th>
@@ -50,6 +51,7 @@
                         </tr>
                         <tr>
                             <th><?= __('Category id') ?></th>
+                            <th><?= __('Parent id') ?></th>
                             <th><?= __('Feature') ?></th>
                             <th><?= __('Name') ?></th>
                             <th><?= __('Description') ?></th>
@@ -60,9 +62,10 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <?php foreach ($categories as $category): ?>
+                        <?php foreach ($categories as $category):?>
                             <tr>
                                 <td><?= $this->Number->format($category->id) ?></td>
+                                <td><?= $this->Number->format($category->parent_id) ?></td>
                                 <td width="10%"><center><?= $this->Core->active($category, 'feature') ?></center></td>
                                 <td><?= h($category->name) ?></td>
                                 <td><?= h($category->description) ?></td>

@@ -7,6 +7,7 @@ use Cake\ORM\Entity;
  * Category Entity.
  *
  * @property int $id
+ * @property int $parent_id
  * @property bool $feature
  * @property string $name
  * @property string $description

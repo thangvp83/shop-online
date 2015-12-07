@@ -80,7 +80,7 @@ class ProductsTable extends Table
             ->notEmpty('status');
 
         $validator
-            ->add('sale_off', 'valid', ['rule' => 'numeric'])
+            ->add('sale_off', 'valid', ['rule' => 'boolean'])
             ->requirePresence('sale_off', 'create')
             ->notEmpty('sale_off');
 
@@ -107,4 +107,5 @@ class ProductsTable extends Table
         $rules->add($rules->existsIn(['category_id'], 'Categories'));
         return $rules;
     }
+
 }

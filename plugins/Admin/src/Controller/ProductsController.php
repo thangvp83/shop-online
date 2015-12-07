@@ -2,6 +2,7 @@
 namespace Admin\Controller;
 
 use Admin\Controller\AppController;
+use Cake\ORM\TableRegistry;
 
 /**
  * Products Controller
@@ -11,6 +12,12 @@ use Admin\Controller\AppController;
 class ProductsController extends AppController
 {
 
+    public $cate_model;
+    public function initialize()
+    {
+        parent::initialize();
+        $this->loadModel('Admin.Categories');
+    }
     /**
      * Index method
      *
@@ -52,20 +59,25 @@ class ProductsController extends AppController
      *
      * @return void Redirects on successful add, renders view otherwise.
      */
-    public function add()
+    public function add($id = null)
     {
+//        debug($this->request->data);die;
         $this->layout = 'Admin.default';
         $product = $this->Products->newEntity();
-        if ($this->request->is('post')) {
+        if($id)
+        { // if edit method
+            $product = $this->Products->get($id)->accessible('group', true)->accessible('status', true);
+        }
+        if ($this->request->is(['patch', 'post', 'put'])){
             $product = $this->Core->patchEntity($product, $this->request->data);
             if ($this->Products->save($product)) {
-                $this->Flash->success(__('The product has been saved'));
-                return $this->redirect(['plugin' => 'admin','action' => 'index']);
+                $this->Flash->success(__('The product has been saved.'));
+                return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The product could not be saved'));
+                $this->Flash->error(__('The product could not be saved. Please, try again.'));
             }
         }
-        $categories = $this->Products->Categories->find('list', ['limit' => 200]);
+        $categories = $this->Categories->getCategoriesForProduct();
         $this->set(compact('product', 'categories'));
         $this->set('_serialize', ['product']);
     }

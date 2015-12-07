@@ -27,6 +27,13 @@ class Product extends Entity
      *
      * @var array
      */
+    public $imageFields = [
+        'image' => [
+            'size' => 3145728, //3*1024*1024 B
+            'extensions' => ['jpg', 'png'],
+            'required' => true
+        ]
+    ];
     protected $_accessible = [
         '*' => true,
         'id' => false,

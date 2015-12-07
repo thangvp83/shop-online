@@ -91,19 +91,32 @@ class Initial extends AbstractMigration
             ->addColumn('thumbnail', 'string', ['limit' => 100,'null' => true,'default' => null])
             ->addColumn('price', 'integer', ['limit' => 10,'default' => 0])
             ->addColumn('status', 'boolean', ['default' => 1])
-            ->addColumn('sale_off', 'integer', ['limit' => 1,'null' => false, 'default' => 0])
+            ->addColumn('sale_off', 'boolean', ['default' => 1])
             ->addColumn('sale_off_date_start', 'date', ['limit' => 10,'null' => true])
             ->addColumn('sale_off_date_end', 'date', ['limit' => 10,'null' => true])
             ->addColumn('created', 'datetime')
             ->save();
 
+        $galleries = $this->table('galleries',['primary_key' => 'id']);
+        $galleries
+            ->addColumn('product_id', 'integer', ['limit' => 10,'null' => false])
+            ->addColumn('name', 'string', ['limit' => 100,'null' => true,'default' => null])
+            ->addColumn('image', 'string', ['limit' => 100,'null' => true,'default' => null])
+            ->addColumn('description', 'string', ['limit' => 100,'null' => true,'default' => null])
+            ->addColumn('link', 'string', ['limit' => 400,'null' => true,'default' => null])
+            ->addColumn('status', 'boolean', ['default' => 1])
+            ->addColumn('created', 'datetime')
+            ->save();
+
         $categories = $this->table('categories',['primary_key' => 'id']);
         $categories
+            ->addColumn('parent_id', 'integer', ['limit' => 10,'null' => false, 'default' => 0])
             ->addColumn('feature', 'boolean', ['limit' => 100,'null' => true,'default' => null])
             ->addColumn('name', 'string', ['limit' => 100,'null' => true,'default' => null])
             ->addColumn('description', 'string', ['limit' => 400,'null' => true,'default' => null])
             ->addColumn('image', 'string', ['limit' => 100,'null' => true,'default' => null])
             ->addColumn('thumbnail', 'string', ['limit' => 100,'null' => true,'default' => null])
+            ->addColumn('type', 'integer', ['limit' => 2,'null' => true,'default' => null])
             ->addColumn('status', 'boolean', ['default' => 1])
             ->addColumn('created', 'datetime')
             ->save();

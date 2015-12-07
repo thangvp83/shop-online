@@ -60,14 +60,25 @@
                             <div class="form-group">
                                 <label class="col-md-2 control-label"><?= __('Description') ?></label>
                                 <div class="col-md-9">
-                                        <?= $this->Form->input('description', ['placeholder' => __('Description'),'class'=>'form-control']) ?>
+                                        <?= $this->Form->textarea('description', ['placeholder' => __('Description'),'class'=>'form-control']) ?>
                             </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-2 control-label"><?= __('Image') ?></label>
                                 <div class="col-md-9">
-                                        <?= $this->Form->input('image', ['placeholder' => __('Image'),'class'=>'form-control']) ?>
-                            </div>
+                                    <?php
+                                    if ($product->image) {
+                                        echo $this->Core->image($product, 'image', 100, 100, [], true, true);
+                                    }
+                                    ?>
+                                    <?= $this->Form->input('image',
+                                        ['type' => 'file', 'preview'=>'.prevIcon', 'placeholder' => __('Image'),'class'=>'form-control']) ?>
+                                    <?php if($product->isNew()):?>
+                                        <div style="max-width: 64px;" class="prevIcon">
+                                            <?= $this->Core->image($product, 'image', 64, 64, [], true, true);?>
+                                        </div>
+                                    <?php endif;?>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-2 control-label"><?= __('Thumbnail') ?></label>
@@ -90,8 +101,8 @@
                             <div class="form-group">
                                 <label class="col-md-2 control-label"><?= __('Sale off') ?></label>
                                 <div class="col-md-9">
-                                        <?= $this->Form->input('sale_off', ['placeholder' => __('Sale off'),'class'=>'form-control']) ?>
-                            </div>
+                                    <?= $this->Form->input('sale_off', ['class'=>'checkbox','label'=>false]) ?>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <?= $this->Form->input('sale_off_date_start', ['placeholder' => __('Sale Off Date Start'), 'empty' => true, 'default' => '']) ?>
