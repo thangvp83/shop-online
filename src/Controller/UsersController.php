@@ -19,8 +19,8 @@ class UsersController extends AppController
      */
     public function login()
     {
-        $this->viewBuilder()->layout('login');
-//        $this->layout = 'login';
+        $this->viewBuilder()->layout(false);
+//        $this->layout = false;
 //        $this->viewBuilder()->layout('login');
         if ($this->request->is('post')) {
             $email = $this->request->data['email'];
