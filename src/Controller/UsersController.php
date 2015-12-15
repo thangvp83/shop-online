@@ -4,6 +4,7 @@ namespace App\Controller;
 use App\Controller\AppController;
 use Cake\Utility\Security;
 use Cake\Routing\Router;
+use Cake\View\View;
 
 /**
  * @property bool layout
@@ -18,7 +19,9 @@ class UsersController extends AppController
      */
     public function login()
     {
-        $this->layout = false;
+        $this->viewBuilder()->layout('login');
+//        $this->layout = 'login';
+//        $this->viewBuilder()->layout('login');
         if ($this->request->is('post')) {
             $email = $this->request->data['email'];
             $password = Security::hash($this->request->data['password'], 'sha1', true);
