@@ -36,6 +36,10 @@ class ProductsTable extends Table
             'joinType' => 'INNER',
             'className' => 'Admin.Categories'
         ]);
+        $this->hasMany('Galleries', [
+//            'foreignKey' => 'category_id',
+            'className' => 'Admin.Galleries'
+        ]);
     }
 
     /**

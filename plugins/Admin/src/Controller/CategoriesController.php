@@ -59,7 +59,7 @@ class CategoriesController extends AppController
                 $this->Flash->error(__('The category could not be saved. Please, try again.'));
             }
         }
-        $category['parent'] = $this->Categories->getAllParent();
+        $category['parent'] = $this->Categories->getAllCategories();
         $this->set(compact('category'));
         $this->set('_serialize', ['category']);
     }

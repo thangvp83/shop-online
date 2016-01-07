@@ -36,7 +36,8 @@
                             <label class="col-md-2 control-label"><?= __('Parent') ?></label>
                             <div class="col-md-9">
                                 <?= $this->Form->input('parent_id',['type' => 'select',
-                                    'options' => $category['parent'],
+                                    'options' => $category['parent']['data'],
+                                    'empty' => array(0 =>__('Category Is Parent')),
                                     'class'=>'form-control']) ?>
                             </div>
                         </div>
@@ -50,13 +51,13 @@
                         <div class="form-group">
                             <label class="col-md-2 control-label"><?= __('Name') ?></label>
                             <div class="col-md-9">
-                                <?= $this->Form->input('name', ['placeholder' => __('Name'),'class'=>'form-control']) ?>
+                                <?= $this->Form->input('name', ['placeholder' => __('Name'), 'class'=>'form-control', 'required' => false]) ?>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-md-2 control-label"><?= __('Description') ?></label>
                             <div class="col-md-9">
-                                <?= $this->Form->textarea('description', ['placeholder' => __('Description'),'class'=>'form-control']) ?>
+                                <?= $this->Form->input('description', ['type' => 'textarea', 'placeholder' => __('Description'),'class'=>'form-control', 'required' => false]) ?>
                             </div>
                         </div>
                         <div class="form-group">

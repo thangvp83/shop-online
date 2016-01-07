@@ -50,4 +50,5 @@
     ));
     ?>
 </body>
+<script>tinymce.init({ selector:'textarea' });</script>
 </html>

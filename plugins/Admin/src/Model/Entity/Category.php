@@ -33,7 +33,7 @@ class Category extends Entity
     public $imageFields = [
         'image' => [
             'size' => 3145728, //3*1024*1024 B
-            'extensions' => ['jpg', 'png'],
+            'extensions' => ['jpg', 'png', 'gif'],
             'required' => true
         ]
     ];

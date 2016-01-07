@@ -365,7 +365,7 @@ class AppController extends Controller
      */
     public function set_active($field = 'active')
     {
-        $this->layout = false;
+        $this->viewBuilder()->layout(false);
         $this->autoRender = false;
 
         if($this->request->is('ajax')) {

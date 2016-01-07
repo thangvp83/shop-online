@@ -22,11 +22,11 @@ class CoreHelper extends Helper {
         $formStart = $this->Form->create(null, ['url' => ['action' => 'set_active', $field], 'class' => 'hw-active']);
         $idHidden = $this->Form->hidden('id', ['value' => $entity->id]);
         $formEnd = $this->Form->end();
-        $checkbox = $this->Form->checkbox($field, ['class' => 'onoffswitch-checkbox', 'id' => 'inline_'.$entity->id, 'checked' => $entity->$field]);
+        $checkbox = $this->Form->checkbox($field, ['class' => 'onoffswitch-checkbox', 'id' => 'inline_'.$field.'_'.$entity->id, 'checked' => $entity->$field]);
         $spanContainer = '
             <span class="onoffswitch">
                 '.$idHidden.$checkbox.'
-                <label class="onoffswitch-label" for="inline_'.$entity->id.'">
+                <label class="onoffswitch-label" for="inline_'.$field.'_'.$entity->id.'">
                     <span class="onoffswitch-inner" data-swchon-text="Yes" data-swchoff-text="No"></span>
                     <span class="onoffswitch-switch"></span>
                 </label>

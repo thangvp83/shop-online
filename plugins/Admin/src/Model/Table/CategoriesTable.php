@@ -32,7 +32,7 @@ class CategoriesTable extends Table
         $this->addBehavior('Timestamp');
 
         $this->hasMany('Products', [
-            'foreignKey' => 'category_id',
+//            'foreignKey' => 'category_id',
             'className' => 'Admin.Products'
         ]);
     }
@@ -57,10 +57,19 @@ class CategoriesTable extends Table
             ->allowEmpty('feature');
 
         $validator
-            ->allowEmpty('name');
+            ->add('name', ['unique' =>
+                [
+//                    'required' => false,
+                    'rule' => 'validateUnique',
+                    'provider' => 'table',
+                    'message' => __('This Category Name Is Exist !')
+                ]
+            ])
+            ->notEmpty('name');
+
 
         $validator
-            ->allowEmpty('description');
+            ->notEmpty('description');
 
         $validator
             ->allowEmpty('image');
@@ -76,17 +85,18 @@ class CategoriesTable extends Table
         return $validator;
     }
 
-    public function getAllParent()
+    public function getAllCategories()
     {
         $data = array();
         $result = $this->find()
-            ->select(['id', 'name'])
-            ->where(['parent_id' => 0, 'status' => ACTIVE_STATUS])
+            ->select(['id', 'name', 'parent_id'])
+            ->where(['status' => ACTIVE_STATUS])
             ->toArray();
         if($result) {
-            foreach ($result as $item) {
+            /*foreach ($result as $item) {
                 $data[$item['id']] = $item['name'];
-            }
+            }*/
+            $data = cate_patent($result, 0);
         }
         return $data;
     }

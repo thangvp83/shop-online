@@ -20,7 +20,7 @@
 
 <div class="row">
     <!-- NEW WIDGET START -->
-    <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <article class="col-xs-6 col-sm-6 col-md-6 col-lg-12">
         <!-- Widget ID (each widget will need unique ID)-->
         <div class="jarviswidget jarviswidget-color-darken" id="wid-id-0" data-widget-colorbutton="false" data-widget-deletebutton="false" data-widget-editbutton="true">
             <header>
@@ -39,24 +39,24 @@
                     <table id="datatable_fixed_column" class="table table-striped table-bordered" width="100%">
                     <thead>
                         <tr>
-                                            <th class="hasinput"><input type="text" class="form-control" placeholder="Filter id" /></th>
-                                            <th class="hasinput"><input type="text" class="form-control" placeholder="Filter category id" /></th>
-                                            <th class="hasinput"><input type="text" class="form-control" placeholder="Filter feature" /></th>
-                                            <th class="hasinput"><input type="text" class="form-control" placeholder="Filter name" /></th>
-                                            <th class="hasinput"><input type="text" class="form-control" placeholder="Filter brand name" /></th>
-                                            <th class="hasinput"><input type="text" class="form-control" placeholder="Filter description" /></th>
-                                            <th class="hasinput"><input type="text" class="form-control" placeholder="Filter image" /></th>
-                                            <th class="hasinput" ></th>
+                            <th class="hasinput"><input type="text" class="form-control" placeholder="Filter id" /></th>
+                            <th class="hasinput"><input type="text" class="form-control" placeholder="Filter category id" /></th>
+                            <th class="hasinput"><input type="text" class="form-control" placeholder="Filter feature" /></th>
+                            <th class="hasinput"><input type="text" class="form-control" placeholder="Filter name" /></th>
+                            <th class="hasinput"><input type="text" class="form-control" placeholder="Filter brand name" /></th>
+                            <th class="hasinput"><input type="text" class="form-control" placeholder="Filter description" /></th>
+                            <th class="hasinput"><input type="text" class="form-control" placeholder="Filter image" /></th>
+                            <th class="hasinput" ></th>
                         </tr>
                         <tr>
-                                            <th><?= __('Id') ?></th>
-                                            <th><?= __('Category id') ?></th>
-                                            <th><?= __('Feature') ?></th>
-                                            <th><?= __('Name') ?></th>
-                                            <th><?= __('Brand name') ?></th>
-                                            <th><?= __('Description') ?></th>
-                                            <th><?= __('Image') ?></th>
-                                            <th width="13%"><?php echo __('Actions') ?></th>
+                            <th><?= __('Id') ?></th>
+                            <th><?= __('Category id') ?></th>
+                            <th><?= __('Feature') ?></th>
+                            <th><?= __('Name') ?></th>
+                            <th><?= __('Brand name') ?></th>
+                            <th><?= __('Description') ?></th>
+                            <th><?= __('Image') ?></th>
+                            <th width="13%"><?php echo __('Actions') ?></th>
                         </tr>
                     </thead>
                     <tbody>

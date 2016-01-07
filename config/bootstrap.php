@@ -211,5 +211,6 @@ Type::build('datetime')->useLocaleParser();
 
 Cake\I18n\I18n::locale(Configure::read('Config.language'));
 require __DIR__ . '/constant.php';
+require __DIR__ . '/functions.php';
 Configure::load('constant', 'default', false);
 require __DIR__ . '/core.php';

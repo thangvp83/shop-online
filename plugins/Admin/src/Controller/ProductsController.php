@@ -25,7 +25,7 @@ class ProductsController extends AppController
      */
     public function index()
     {
-        $this->layout = 'Admin.default';
+        $this->viewBuilder()->layout('Admin.default');
         $this->paginate = [
             'contain' => ['Categories']
         ];
@@ -46,7 +46,7 @@ class ProductsController extends AppController
      */
     public function view($id = null)
     {
-        $this->layout = 'Admin.default';
+        $this->viewBuilder()->layout('Admin.default');
         $product = $this->Products->get($id, [
             'contain' => ['Categories']
         ]);
@@ -62,7 +62,7 @@ class ProductsController extends AppController
     public function add($id = null)
     {
 //        debug($this->request->data);die;
-        $this->layout = 'Admin.default';
+        $this->viewBuilder()->layout('Admin.default');
         $product = $this->Products->newEntity();
         if($id)
         { // if edit method
@@ -70,6 +70,7 @@ class ProductsController extends AppController
         }
         if ($this->request->is(['patch', 'post', 'put'])){
             $product = $this->Core->patchEntity($product, $this->request->data);
+            debug($product);die();
             if ($this->Products->save($product)) {
                 $this->Flash->success(__('The product has been saved.'));
                 return $this->redirect(['action' => 'index']);
@@ -78,6 +79,10 @@ class ProductsController extends AppController
             }
         }
         $categories = $this->Categories->getCategoriesForProduct();
+
+        $this->buildHasMany($product,'cards',['container'=>'#listCard','add'=>'.btn_add','delete'=>'.btn_delete']);
+
+
         $this->set(compact('product', 'categories'));
         $this->set('_serialize', ['product']);
     }
@@ -91,7 +96,7 @@ class ProductsController extends AppController
      */
     public function edit($id = null)
     {
-        $this->layout = 'Admin.default';
+        $this->viewBuilder()->layout('Admin.default');
         $product = $this->Products->get($id, [
             'contain' => []
         ]);
